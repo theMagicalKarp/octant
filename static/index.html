@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Octant</title>
+
+  <!-- <link rel="stylesheet" href="http://picnicss.com/releases/latest.min.css"> -->
+  <link rel="stylesheet" href="/static/css/materialize.min.css">
+  <!-- <link rel="stylesheet" href="/static/css/base.css"> -->
+  <style>
+    body {
+      word-break: break-all;
+    }
+
+    .logs pre {
+      font-size: 1.1rem;
+      font-family: monospace, monospace;
+      font-size: 1em;
+      padding: .9rem;
+      /*background: #f5f2f0;*/
+      /*background: #fafafa;*/
+      background: #212121;
+      color: #00c853;
+
+      height: 250px;
+      overflow-y: scroll;
+    }
+
+    .collection-header {
+      background: #eceff1;
+    }
+    
+  </style>
+</head>
+
+<body>
+<nav class="blue-grey darken-3" style="margin-bottom:40px;">
+  <div class="container">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Octant</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container" id="home">
+  <div id="containers" class="row"></div>
+  <div id="images" class="row"></div>
+</div>
+
+<div class="container" id="image" style="display:none;"></div>
+
+<div class="container" id="container" style="display:none;">
+  <div class="logs"></div>
+  <div class="info"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="/static/js/materialize.min.js"></script>
+
+
+<script src="/static/js/app.js"></script>
+<script src="/static/js/image.js"></script>
+<script src="/static/js/container.js"></script>
+<script src="/static/js/router.js"></script>
+
+</body>
+</html>
