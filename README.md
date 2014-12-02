@@ -1,6 +1,6 @@
 ![OCTANT](http://i.imgur.com/ZKRDxRe.png)
 
-A tool to visualize your docker daemon.
+A tool to visualize your docker daemon. A demo can be found [here](http://dev.rob-sheehy.com/).
 
 ![octant](http://i.imgur.com/Nptbaiy.jpg)
 
