@@ -5,7 +5,7 @@ var renderImageHistory = function(history) {
     }
 
     return [
-      '[', item.Created,'] ', item.CreatedBy, '\n'
+      '[', formatTime(item.Created),'] ', item.CreatedBy, '\n'
     ].join('');
   });
 

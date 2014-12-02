@@ -1,3 +1,16 @@
+var formatTime = function(unixEpoch) {
+  var record = new Date(unixEpoch * 1000);
+  var year = record.getFullYear();
+  var month = record.getMonth();
+  var date = record.getDate();
+  var hour = record.getHours();
+  var min = record.getMinutes();
+  var sec = record.getSeconds();
+  return [
+    month, '/', date, '/', year, ' ', hour, ':', min, ':', sec
+  ].join('');
+};
+
 var getDockerId = function() {
   return window.history.state.split(':')[1];
 };
