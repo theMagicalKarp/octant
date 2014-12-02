@@ -21,22 +21,35 @@ var renderContainer = function(container) {
   console.log(container);
 
   var keys = [
-    'Id', 'Created',
+    'Name', 'Id', 'Created', 'Volumes', 'Path'
   ];
   var info = _.map(keys, function(key) {
+    var data = container[key];
+    if (_.isUndefined(data)) {
+      return '';
+    } else if (_.isObject(data)) {
+      data = _.map(data, function(attribute) {
+        return [
+          '<span class="mute">',
+            attribute, ': ', data[attribute],
+          '</span><br>'
+        ].join('');
+      }).join('');
+    }
+
     return [
-      '<li class="collection-item">',
+      '<div class="collection-item">',
         '<strong>', key, '</strong><br>',
-        '<span class="mute">', container[key], '</span>',
-      '</li>'
+        '<span class="mute">', data, '</span>',
+      '</div>'
     ].join('');
   });
 
   info = [
-    '<ul class="collection with-header">',
-      '<li class="collection-header"><h4>Info</h4></li>',
+    '<div class="collection with-header">',
+      '<div class="collection-header"><h4>Info</h4></div>',
       info.join(''),
-    '</ul>'
+    '</div>'
   ].join('');
 
 
@@ -51,18 +64,18 @@ var renderContainer = function(container) {
     }
 
     return [
-      '<li class="collection-item">',
+      '<div class="collection-item">',
         '<strong>', configLabel, '</strong><br>',
         '<span class="mute">', configValue, '</span>',
-      '</li>'
+      '</div>'
     ].join('');
   });
 
   config = [
-    '<ul class="collection with-header">',
-      '<li class="collection-header"><h4>Config</h4></li>',
+    '<div class="collection with-header">',
+      '<div class="collection-header"><h4>Config</h4></div>',
       config.join(''),
-    '</ul>'
+    '</div>'
   ].join('');
 
 
