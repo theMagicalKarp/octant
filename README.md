@@ -3,7 +3,7 @@ OCTANT
 
 A tool to visualize your docker daemon.
 
-![octant](https://c1.staticflickr.com/1/27/55094953_f0ad41ac74.jpg)
+![octant](http://i.imgur.com/Nptbaiy.jpg)
 
 Running Inside Docker
 ======
