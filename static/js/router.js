@@ -18,6 +18,14 @@ var route = function(state) {
       'success': renderContainers
     });
 
+
+    $.ajax({
+      'url': '/info',
+      'type': 'GET',
+      'dataType': 'json',
+      'success': renderDockerInfo
+    });
+
     return;
   }
 
@@ -27,6 +35,12 @@ var route = function(state) {
     $('#container').hide();
     $('#image').show();
     $('#home').hide();
+
+    $.ajax({
+      'url': ['/image', state[1], 'history'].join('/'),
+      'type': 'GET',
+      'success': renderImageHistory
+    });
 
     $.ajax({
       'url': ['/image/', state[1]].join(''),
@@ -39,6 +53,12 @@ var route = function(state) {
     $('#container').show();
     $('#image').hide();
     $('#home').hide();
+
+    $.ajax({
+      'url': ['/container', state[1], 'logs'].join('/'),
+      'type': 'GET',
+      'success': renderLogs
+    });
 
     $.ajax({
       'url': ['/container/', state[1]].join(''),
