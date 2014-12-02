@@ -1,27 +1,27 @@
-/* #Base 960 Grid */
-.container { position: relative; width: 960px; margin: 0 auto; padding: 0; }
-
-/* #Tablet (Portrait) Design for a width of 768px */
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-  .container { width: 768px; }
-}
-
-/*  #Mobile (Portrait) Design for a width of 320px */
-@media only screen and (max-width: 767px) {
-  .container { width: 300px; }
-}
-
-/* #Mobile (Landscape) Design for a width of 480px */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-  .container { width: 420px; }
-}
-
-
 body {
-  padding-top: 75px;
+  word-break: break-all;
 }
 
+.logs pre, .history pre {
+  font-size: 1.1rem;
+  font-family: monospace, monospace;
+  font-size: 1em;
+  padding: .9rem;
+  background: #212121; /* grey darken-4 */
+  color: #00c853; /* green accent-4 */
 
-table {
-  width: 100%;
+  height: 250px;
+  overflow-y: scroll;
+}
+
+.collection-header {
+  background: #eceff1; /* blue-grey lighten-5 */
+}
+
+.mute {
+  color: #757575; /* grey darken-1 */
+}
+
+h1 {
+  margin-bottom: 15px;
 }
