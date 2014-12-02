@@ -3,7 +3,7 @@ OCTANT
 
 A tool to visualize your docker daemon.
 
-![octant](http://i.istockimg.com/file_thumbview_approve/18816113/2/stock-illustration-18816113-sextant.jpg)
+![octant](https://c1.staticflickr.com/1/27/55094953_f0ad41ac74.jpg)
 
 Running Inside Docker
 ======
@@ -54,4 +54,4 @@ Visit ```http://localhost:8000```
 Hints
 ------
 * Make sure ```$DOCKER_HOST``` env variable is properly set.
-* Make sure Boot2Docker is running ```boot2docker up```
+* Make sure Boot2Docker is running, ```boot2docker up```
