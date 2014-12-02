@@ -1,5 +1,4 @@
 var renderLogs = function(logs) {
-  console.log('foobar');
   $('#container .logs').html([
     '<div class="collection with-header">',
       '<div class="collection-header">',
@@ -14,44 +13,25 @@ var renderLogs = function(logs) {
     '</div>'
   ].join(''));
 
-  // Waves.displayEffect();
+  // hack to get waves on buttons to display w/ dynamicly generated html
+  Waves.displayEffect();
 };
 
 var renderContainer = function(container) {
-  // $('#container').html(JSON.stringify(container, null, 4));
-
-  $.ajax({
-    'url': ['/container', container.Id, 'logs'].join('/'),
-    'type': 'GET',
-    'success': renderLogs
-  });
-
-  var env = _.map(container.Config.Env, function(env) {
-    return [
-      '<li class="collection-item">',
-        env,
-      '</li>'
-    ].join('');
-  });
-  env = [
-    '<ul class="collection with-header">',
-      '<li class="collection-header"><h4>Enviroment Variables</h4></li>',
-      env.join(''),
-    '</ul>'
-  ].join('');
-
+  console.log(container);
 
   var keys = [
-    'Id', 'Created', 'Driver', 'Path'
+    'Id', 'Created',
   ];
   var info = _.map(keys, function(key) {
     return [
       '<li class="collection-item">',
-        '<p><strong>', key, '</strong></p>',
-        '<p>', container[key], '</p>',
+        '<strong>', key, '</strong><br>',
+        '<span class="mute">', container[key], '</span>',
       '</li>'
     ].join('');
   });
+
   info = [
     '<ul class="collection with-header">',
       '<li class="collection-header"><h4>Info</h4></li>',
@@ -60,9 +40,34 @@ var renderContainer = function(container) {
   ].join('');
 
 
+  var config = _.map(container.Config, function(configValue, configLabel) {
+    if (configLabel === 'Cmd') {
+      configValue = configValue.join(' ');
+    } else if (_.isArray(configValue)) {
+      configValue = configValue.join('</span><span class="mute"><br>');
+    } else if (_.isObject(configValue)) {
+      // todo handle the Exposed Port Stuff
+      return '';
+    }
+
+    return [
+      '<li class="collection-item">',
+        '<strong>', configLabel, '</strong><br>',
+        '<span class="mute">', configValue, '</span>',
+      '</li>'
+    ].join('');
+  });
+
+  config = [
+    '<ul class="collection with-header">',
+      '<li class="collection-header"><h4>Config</h4></li>',
+      config.join(''),
+    '</ul>'
+  ].join('');
+
 
   $('#container .info').html([
-    info, env
+    info, config
   ].join(''));
 };
 
@@ -76,6 +81,9 @@ var renderContainers = function(containers) {
   });
 
   
+  if (rows.length === 0) {
+    rows = ['<div class="collection-item">No containers...</div>'];
+  }
   $('#containers').html([
     '<div class="collection with-header">',
       '<div class="collection-header blue-grey lighten-5"><h4>Containers</h4></div>',
