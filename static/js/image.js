@@ -22,21 +22,25 @@ var renderImageHistory = function(history) {
 var renderImage = function(image) {
   console.log(image);
 
-  var keys = ['Id', 'Architecture', 'Created', 'DockerVersion'];
+  var keys = ['Id', 'Architecture', 'Created', 'DockerVersion', 'Author'];
   var info = _.map(keys, function(key) {
+    if (_.isUndefined(image[key])) {
+      return '';
+    }
+
     return [
-      '<li class="collection-item">',
+      '<div class="collection-item">',
         '<strong>', key, '</strong><br>',
         '<span class="mute">', image[key], '</span>',
-      '</li>'
+      '</div>'
     ].join('');
   });
 
   info = [
-    '<ul class="collection with-header">',
-      '<li class="collection-header"><h4>Info</h4></li>',
+    '<div class="collection with-header">',
+      '<div class="collection-header"><h4>Info</h4></div>',
       info.join(''),
-    '</ul>'
+    '</div>'
   ].join('');
 
 
@@ -51,19 +55,19 @@ var renderImage = function(image) {
     }
 
     return [
-      '<li class="collection-item">',
+      '<div class="collection-item">',
         '<strong>', configLabel, '</strong><br>',
         '<span class="mute">', configValue, '</span>',
-      '</li>'
+      '</div>'
     ].join('');
   });
 
 
   config = [
-    '<ul class="collection with-header">',
-      '<li class="collection-header"><h4>Config</h4></li>',
+    '<div class="collection with-header">',
+      '<div class="collection-header"><h4>Config</h4></div>',
       config.join(''),
-    '</ul>'
+    '</div>'
   ].join('');
 
   $('#image .info').html([
