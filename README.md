@@ -1,5 +1,4 @@
-OCTANT
-======
+![OCTANT](http://i.imgur.com/ZKRDxRe.png)
 
 A tool to visualize your docker daemon.
 
