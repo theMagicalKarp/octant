@@ -110,7 +110,9 @@ func main() {
     })
 
     goji.Get("/images", func(c web.C, w http.ResponseWriter, r *http.Request) {
-        images, err := client.ListImages(false)
+        images, err := client.ListImages(docker.ListImagesOptions {
+            All: false,
+        })
 
         if err != nil {
             http.Error(w, http.StatusText(500), 500)
